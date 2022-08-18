@@ -1,0 +1,46 @@
+<style>
+  .progress-bar {
+    position: relative;
+    height: 16px;
+    width: 280px;
+
+    border-radius: 8px;
+    background-color: #47A7FF44;
+  }
+
+  .progress-bar>div {
+    height: 100%;
+    width: 0%;
+
+    border-radius: 8px;
+    background-color: #47A7FF;
+
+    transition: width 200ms;
+  }
+
+  .progress-bar>span {
+    position: absolute;
+    left: 50%;
+  }
+</style>
+
+<body>
+  <div class="progress-bar">
+    <span>0%</span>
+    <div></div>
+  </div>
+</body>
+
+<script>
+  var progress = 0.0;
+
+  var intervalID = window.setInterval(loopPgrogress, 50);
+
+  function loopPgrogress() {
+    const pb = document.querySelector('.progress-bar > div');
+    const pbt = document.querySelector('.progress-bar > span');
+    progress = progress == 100 ? 0 : progress + 1;
+    pb.style.width = progress + '%';
+    pbt.innerHTML = progress + '%';
+  }
+</script>

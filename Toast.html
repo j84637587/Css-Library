@@ -1,0 +1,52 @@
+<style>
+    .toast {
+        /* 固定到右下角 */
+        position: fixed;
+        bottom: 0;
+        right: 0;
+
+        /* 初始透明 */
+        transform: translate(100%); /* 右移一個width */
+        opacity: 0;
+
+        /* 動畫 漸入/出 移動速度 */
+        transition: opacity 500ms, transform 500ms;
+    }
+
+    .toast.show {
+        transform: translateX(0);  /* 歸位 */
+        opacity: 1;
+    }
+
+    .toast-body {
+        margin: 24px;
+        padding: 16px 20px;
+
+        background-color: #000000cc;
+        color: #ffffff;
+
+        border-radius: 4px;
+    }
+</style>
+
+<input id="message" value="test">
+<button onclick="showToast(getElementById('message').value)">顯示</button>
+<button onclick="hideToast()">隱藏</button>
+<div id="toast" class="toast">
+    <div class="toast-body">
+        Message
+    </div>
+</div>
+
+<script>
+    const toast = document.getElementById('toast');
+
+    function showToast(message) {
+        toast.querySelector('.toast-body').innerHTML = message;
+        toast.classList.add('show')
+    }
+
+    function hideToast() {
+        toast.classList.remove('show')
+    }
+</script>
