@@ -1,42 +1,59 @@
-<style>
-    .toast {
-        /* 固定到右下角 */
-        position: fixed;
-        bottom: 0;
-        right: 0;
+<!DOCTYPE html>
+<html lang="en">
 
-        /* 初始透明 */
-        transform: translate(100%); /* 右移一個width */
-        opacity: 0;
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
 
-        /* 動畫 漸入/出 移動速度 */
-        transition: opacity 500ms, transform 500ms;
-    }
+    <style>
+        .toast {
+            /* 固定到右下角 */
+            position: fixed;
+            bottom: 0;
+            right: 0;
 
-    .toast.show {
-        transform: translateX(0);  /* 歸位 */
-        opacity: 1;
-    }
+            /* 初始透明 */
+            transform: translate(100%);
+            /* 右移一個width */
+            opacity: 0;
 
-    .toast-body {
-        margin: 24px;
-        padding: 16px 20px;
+            /* 動畫 漸入/出 移動速度 */
+            transition: opacity 500ms, transform 500ms;
+        }
 
-        background-color: #000000cc;
-        color: #ffffff;
+        .toast.show {
+            transform: translateX(0);
+            /* 歸位 */
+            opacity: 1;
+        }
 
-        border-radius: 4px;
-    }
-</style>
+        .toast-body {
+            margin: 24px;
+            padding: 16px 20px;
 
-<input id="message" value="test">
-<button onclick="showToast(getElementById('message').value)">顯示</button>
-<button onclick="hideToast()">隱藏</button>
-<div id="toast" class="toast">
-    <div class="toast-body">
-        Message
+            background-color: #000000cc;
+            color: #ffffff;
+
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body style="margin: 24px;">
+    <input id="message" value="test">
+    <button onclick="showToast(getElementById('message').value)">顯示</button>
+    <button onclick="hideToast()">隱藏</button>
+    <div id="toast" class="toast">
+        <div class="toast-body">
+            Message
+        </div>
     </div>
-</div>
+
+</body>
+
+</html>
 
 <script>
     const toast = document.getElementById('toast');

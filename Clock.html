@@ -1,128 +1,142 @@
-<style>
-    .clock {
-        position: relative;
+<!DOCTYPE html>
+<html lang="en">
 
-        box-shadow:
-            rgba(0, 0, 0, 0.06) 0 4px 80px,
-            rgba(0, 0, 0, 0.08) 0 10px 100px;
-        border-radius: 30px;
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
 
-        width: 150px;
-        height: 150px;
+    <style>
+        .clock {
+            position: relative;
 
-        /* 繪製時間 */
-        display: grid;
-        place-items: center;
-        grid-template-columns: auto 1fr auto;
-        grid-template-rows: auto 1fr auto;
-        grid-template-areas:
-            ". twelve ."
-            "nine . three"
-            ". six .";
-    }
+            box-shadow:
+                rgba(0, 0, 0, 0.06) 0 4px 80px,
+                rgba(0, 0, 0, 0.08) 0 10px 100px;
+            border-radius: 30px;
 
-    .clock .pointer {
-        position: absolute;
-        left: calc(50%-4px);
-        bottom: 50%;
-        border-radius: 4px;
+            width: 150px;
+            height: 150px;
 
-        transform-origin: bottom;
-        /* transition: transform 500ms; */
-    }
-
-    .clock .seconds {
-        width: 3px;
-        height: 30%;
-
-        background-color: #e63946;
-    }
-
-    .clock .minute {
-        width: 4px;
-        height: 30%;
-
-        background-color: #000000;
-    }
-
-    .clock .hour {
-        width: 4px;
-        height: 20%;
-
-        background-color: #000000;
-    }
-
-    .clock .center-dot {
-        width: 5%;
-        height: 5%;
-        background-color: #dd5931;
-        border: 2px solid white;
-
-        position: absolute;
-        left: calc(50%-4px);
-        bottom: 47.5%;
-        border-radius: 10px;
-
-        transform-origin: bottom;
-    }
-</style>
-
-<button onclick="switchClock()">停止</button>
-<button onclick="resetClock()">歸零</button>
-<div class="clock">
-    <span></span>
-    <span>12</span>
-    <span></span>
-    <span>9</span>
-    <span></span>
-    <span>3</span>
-    <span></span>
-    <span>6</span>
-    <span></span>
-    <div class="pointer seconds"></div>
-    <div class="pointer minute"></div>
-    <div class="pointer hour"></div>
-    <div class="center-dot"></div>
-</div>
-
-<script>
-    var run = true;
-    var speed = 30; // 幾倍速率
-    var seconds = 0;
-    var minute = 0;
-    var hour = 0;
-    const eSeconds = document.querySelector('.clock > .seconds');
-    const eMinute = document.querySelector('.clock > .minute');
-    const eHour = document.querySelector('.clock > .hour');
-    var intervalID = window.setInterval(runClock, 1000 / speed);
-
-    function runClock() {
-        if(!run) return;
-
-        // 計算時間
-        if (seconds == 59) {
-            seconds = 0
-            if (minute == 59) {
-                minute = 0
-                hour = hour == 11 ? 0 : hour + 1;
-            } else {
-                minute += 1;
-            }
-        } else {
-            seconds += 1;
+            /* 繪製時間 */
+            display: grid;
+            place-items: center;
+            grid-template-columns: auto 1fr auto;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas:
+                ". twelve ."
+                "nine . three"
+                ". six .";
         }
 
-        // 更新指針位置
-        eSeconds.style.transform = `rotateZ(${6 * seconds}deg)`;
-        eMinute.style.transform = `rotateZ(${6 * minute + 6 / 60 * seconds}deg)`;
-        eHour.style.transform = `rotateZ(${30 * hour + 30 / 60 * minute + 30 / 60 / 60 * seconds}deg)`;
-    }
+        .clock .pointer {
+            position: absolute;
+            left: calc(50%-4px);
+            bottom: 50%;
+            border-radius: 4px;
 
-    function switchClock() {
-        run = !run;
-    }
+            transform-origin: bottom;
+            /* transition: transform 500ms; */
+        }
 
-    function resetClock() {
-        seconds = minute = hour = 0;
-    }
-</script>
+        .clock .seconds {
+            width: 3px;
+            height: 30%;
+
+            background-color: #e63946;
+        }
+
+        .clock .minute {
+            width: 4px;
+            height: 30%;
+
+            background-color: #000000;
+        }
+
+        .clock .hour {
+            width: 4px;
+            height: 20%;
+
+            background-color: #000000;
+        }
+
+        .clock .center-dot {
+            width: 5%;
+            height: 5%;
+            background-color: #dd5931;
+            border: 2px solid white;
+
+            position: absolute;
+            left: calc(50%-4px);
+            bottom: 47.5%;
+            border-radius: 10px;
+
+            transform-origin: bottom;
+        }
+    </style>
+</head>
+
+<body style="margin: 24px;">
+    <button onclick="switchClock()">停止</button>
+    <button onclick="resetClock()">歸零</button>
+    <div class="clock">
+        <span></span>
+        <span>12</span>
+        <span></span>
+        <span>9</span>
+        <span></span>
+        <span>3</span>
+        <span></span>
+        <span>6</span>
+        <span></span>
+        <div class="pointer seconds"></div>
+        <div class="pointer minute"></div>
+        <div class="pointer hour"></div>
+        <div class="center-dot"></div>
+    </div>
+
+    <script>
+        var run = true;
+        var speed = 30; // 幾倍速率
+        var seconds = 0;
+        var minute = 0;
+        var hour = 0;
+        const eSeconds = document.querySelector('.clock > .seconds');
+        const eMinute = document.querySelector('.clock > .minute');
+        const eHour = document.querySelector('.clock > .hour');
+        var intervalID = window.setInterval(runClock, 1000 / speed);
+
+        function runClock() {
+            if (!run) return;
+
+            // 計算時間
+            if (seconds == 59) {
+                seconds = 0
+                if (minute == 59) {
+                    minute = 0
+                    hour = hour == 11 ? 0 : hour + 1;
+                } else {
+                    minute += 1;
+                }
+            } else {
+                seconds += 1;
+            }
+
+            // 更新指針位置
+            eSeconds.style.transform = `rotateZ(${6 * seconds}deg)`;
+            eMinute.style.transform = `rotateZ(${6 * minute + 6 / 60 * seconds}deg)`;
+            eHour.style.transform = `rotateZ(${30 * hour + 30 / 60 * minute + 30 / 60 / 60 * seconds}deg)`;
+        }
+
+        function switchClock() {
+            run = !run;
+        }
+
+        function resetClock() {
+            seconds = minute = hour = 0;
+        }
+    </script>
+</body>
+
+</html>
