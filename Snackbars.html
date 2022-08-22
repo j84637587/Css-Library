@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS</title>
+
+  <style>
+    .snackbar {
+        position: fixed;
+
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        margin: auto;
+
+        background-color: #121212;
+        color: white;
+
+        display: flex;
+        align-items: center;
+
+        width: min(100%, 400px);
+
+        animation: 
+            slide-in 500ms ease,
+            slide-out 500ms ease 3s; /* 3秒後才會觸發 */
+        
+        @keyframes slide-in {
+            from {
+                transform: translateY(100%);
+            }
+        }
+
+        @keyframes slide-out {
+            to {
+                transform: translateY(100%);
+            }
+        }
+    }
+
+    .snackbar .content,
+    .snackbar .action {
+        padding: 16px;
+    }
+
+    .snackbar .action {
+        background: none;
+        border: none;
+        outline: none;
+
+        margin-left: auto;
+
+        cursor: pointer;
+
+        color: #8effff;
+        border-radius: 2px;
+        padding: 16px;
+    }
+
+    .snackbar .action:focus {
+        outline: solid white 1px;
+        background-color: #ffffff11;
+    }
+  </style>
+</head>
+
+<body style="margin: 24px;">
+  <output class="snackbar">
+    <span class="content">
+        Success
+    </span>
+    <button class="action" onclick="document.body.removeChild">
+        Undo
+    </button>
+  </output>
+
+  <script>
+    function createSnackbar() {
+        const snackbar = document.createElement('output');
+        snackbar.classList.add('snackbar');
+
+        document.body.appendChild(snackbar);
+
+        const promises = snackbar.getAnimations().map(e => e.finished);
+
+        Promise.all(promises).then(() => {
+            document.body.removeChild(snackbar);
+        })
+    }
+  </script>
+</body>
+
+</html>
