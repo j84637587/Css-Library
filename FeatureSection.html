@@ -1,0 +1,192 @@
+</html><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
+
+    <style>
+        :root {
+            --Red: hsl(0, 78%, 62%);
+            --Cyan: hsl(180, 62%, 55%);
+            --Orange: hsl(34, 97%, 64%);
+            --Blue: hsl(212, 86%, 64%);
+
+            --Grayish_Blue: hsl(229, 6%, 66%);
+            --Very_Light_Gray: hsl(0, 0%, 98%);
+        }
+
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            line-height: 1.5;
+            text-rendering: optimizeSpeed;
+        }
+
+        .background {
+            min-height: 100vh;
+            background-color: var(--Very_Light_Gray);
+        }
+
+        .container {
+            padding: 2em;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .top-text {
+            max-width: 550px;
+            text-align: center;
+            margin: 2em auto 8em auto;
+        }
+
+        p, h1, h2 {
+            overflow-wrap: break-word;
+        }
+
+        .head {
+            font-size: 2rem;
+            font-weight: 200;
+            color: var(--Grayish_Blue)
+        }
+
+        .head-bold {
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--Grayish_Blue)
+        }
+
+        .text {
+            font-size: 1.025em;
+            font-weight: 400;
+            color: var(--Grayish_Blue);
+            margin-top: 1em;
+        }
+
+        img{
+            display: block;
+            width: 50px;
+            pointer-events: none;
+        }
+
+        .border-cyan {
+            border-top: 5px solid var(--Cyan);
+        }
+
+        .border-red {
+            border-top: 5px solid var(--Red);
+        }
+
+        .border-orange {
+            border-top: 5px solid var(--Orange);
+        }
+
+        .border-blue {
+            border-top: 5px solid var(--Blue);
+        }
+
+        .cards-section {
+            display: flex;
+            gap: 3em;
+            justify-content: center;
+        }
+
+        .middle-section {
+            display: flex;
+            flex-shrink: 0;
+            flex-direction: column;
+            gap: 3em;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            max-width: 25em;
+            padding: 2em;
+            border-radius: .4em;
+            box-shadow: 0 0.8em 1em 0 rgba(163, 165, 174, .4);
+        }
+
+        .card:first-child, .card:last-child {
+            align-self: center;
+        }
+
+        .icon {
+            align-self: flex-end;
+        }
+
+        @media (max-width: 1100px) {
+            .cards-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body style="margin: 24px;">
+    <div class="background">
+        <div class="container">
+            <div class="top-text">
+                <h2 class="head">Online Course</h2>
+                <h1 class="head-bold">Learning Everywhere</h1>
+                <p class="text">Best course Are here. Learn whatever you want!</p>
+            </div>
+            <section class="cards-section">
+                <div class="card border-cyan">
+                    <div class="card-text">
+                        <h1 class="head-bold">Science</h1>
+                        <p class="text">Basic Science: Electricity<br/>You would learn what is electric and how to use it. </p>
+                    </div>
+                    <div class="icon">
+                        <img src="./assets/battery.png"  alt="">
+                    </div>
+                </div>
+                <div class="middle-section">
+                    <div class="card border-red">
+                        <div class="card-text">
+                            <h1 class="head-bold">Physics</h1>
+                            <p class="text">Basic Physics<br/>You would learn how physics works.</p>
+                        </div>
+                        <div class="icon">
+                            <img src="./assets/newtons-cradle.png"  alt="">
+                        </div>
+                    </div>
+                    <div class="card border-orange">
+                        <div class="card-text">
+                            <h1 class="head-bold">Math</h1>
+                            <p class="text">Basic Math<br/>You would learn math logic by playing Sudoku, Nonogram and so on.</p>
+                        </div>
+                        <div class="icon">
+                            <img src="./assets/tic-tac-toe.png"  alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-blue">
+                    <div class="card-text">
+                        <h1 class="head-bold">Plants</h1>
+                        <p class="text">Basic Plants<br/>You would learn all kins of plants and ways to grow them.</p>
+                    </div>
+                    <div class="icon">
+                        <img src="./assets/water.png"  alt="">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+    <script>
+    </script>
+</body>
+
+</html>
